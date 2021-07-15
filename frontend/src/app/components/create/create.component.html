@@ -1,0 +1,54 @@
+<div class="content" *ngIf="proyecto">
+<h2>{{title}}</h2>
+<div id="confirm" *ngIf="status == 1">
+    ¡El Proyecto se ha creado correctamente!
+</div>
+
+<div id="failed" *ngIf="status == -1">
+    ¡El Proyecto NO se ha creado correctamente!, error
+</div>
+
+<form #projectform="ngForm" (ngSubmit)=onSubmit(projectform)>
+   <p>
+       <label for="name">Nombre</label>
+       <input type="text" name="name" placeholder="Nombre" #name="ngModel" [(ngModel)]="proyecto.name"
+       required/>
+       <span *ngIf="name.touched && !name.valid" style="color: red;">Nombre es requerido</span>
+   </p> 
+   <p>
+    <label for="desc">Descripción</label>
+    <textarea name="desc" placeholder="Descripción" #desc="ngModel" [(ngModel)]="proyecto.desc"
+    required></textarea>
+    <span *ngIf="desc.touched && !desc.valid" style="color: red;">Descripción es requerida</span>
+</p>  
+<p>
+    <label for="category">Categoria</label>
+    <input type="text" name="category" placeholder="Categoria" #category="ngModel" [(ngModel)]="proyecto.category"
+    required/>
+    <span *ngIf="category.touched && !category.valid" style="color: red;">Categoria es requerida</span>
+</p>
+<p>
+    <label for="year">Año</label>
+    <input type="number" name="year" placeholder="Año" #year="ngModel" [(ngModel)]="proyecto.year">
+    <span *ngIf="year.touched && !year.valid" style="color: red;">Año es requerido</span>
+</p>
+<p>
+    <label for="langs">Lenguajes</label>
+    <input type="text" name="langs" placeholder="Lenguajes" #langs="ngModel" [(ngModel)]="proyecto.langs"
+    required/>
+    <span *ngIf="langs.touched && !langs.valid" style="color: red;">Lenguaje es requerido</span>
+</p>
+<p>
+    <label for="image">Imagen</label>
+    <span *ngIf="proyecto.image">
+    <span *ngIf="proyecto.image.length == 28" ><img src="{{url+'getImage/'+proyecto.image}}" height="180px"> <br>
+    </span>
+    </span>
+    <input type="file" name="image" #image="ngModel" [(ngModel)]="proyecto.image"
+    (change)="fileChangeEvent($event)">
+</p>
+<p>
+    <input type="submit" value="Enviar" [disabled]=!projectform.valid>
+</p>
+</form>
+</div>

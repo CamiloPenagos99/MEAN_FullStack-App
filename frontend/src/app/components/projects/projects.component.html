@@ -1,0 +1,13 @@
+<div class="proyects-cont">
+    <h2>Proyectos Registrados</h2>
+    <ul>
+        <li *ngFor="let proX of proyectos" class="miproject">
+            <h3><a [routerLink]="['/detalle',proX._id]">{{proX.name}}</a></h3> 
+            <img src="{{url+'getImage/'+proX.image}}"  *ngIf="proX.image">
+            <p>
+            {{proX.category}} - <span>{{proX.langs}}</span>
+            </p>
+            <p> {{proX.desc}}</p>
+        </li>
+    </ul>
+</div>

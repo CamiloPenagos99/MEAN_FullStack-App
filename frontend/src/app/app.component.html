@@ -1,0 +1,17 @@
+<header>
+<ul>
+  <li><a [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">Inicio</a></li>
+  <li><a [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Proyectos</a></li>
+  <li class="logo"><a href="#">CP</a></li>
+  <li><a [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">Añadir</a></li>
+  <li><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li>
+</ul>
+</header>
+
+<section id="content">
+  <router-outlet></router-outlet>
+</section>
+
+<footer>
+  Web desarrollada por Camilo Penagos
+</footer>
